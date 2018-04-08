@@ -29,6 +29,9 @@ pins.setPull(buttonA, PinPullMode.PullUp);
 pins.setPull(buttonB, PinPullMode.PullUp);
 
 radio.setGroup(1);
+basic.showIcon(IconNames.Square);
+
+
 
 while (true) {
     if (PRESSED == pins.digitalReadPin(buttonForward)) {
@@ -55,6 +58,31 @@ while (true) {
     if (lastCommand != newCommand) {
         radio.sendNumber(newCommand);
         lastCommand = newCommand;
+        switch (newCommand) {
+            case RcCommand.FORWARD:
+                basic.showArrow(ArrowNames.North);
+                break;
+            case RcCommand.BACK:
+                basic.showArrow(ArrowNames.South);
+                break;
+            case RcCommand.RIGHT:
+                basic.showArrow(ArrowNames.East);
+                break;
+            case RcCommand.LEFT:
+                basic.showArrow(ArrowNames.West);
+                break;
+            case RcCommand.STOP:
+                basic.showIcon(IconNames.Square);
+                break;
+            case RcCommand.A:
+                basic.showString("A");
+                break;
+            case RcCommand.B:
+                basic.showString("B");
+                break;
+        }
+
     }
-    basic.pause(100);
+    basic.pause(50);
 }
+
