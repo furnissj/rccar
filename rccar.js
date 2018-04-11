@@ -8,10 +8,10 @@ let RcCommand = {
     B: 6,
 };
 
-let forwardSpeed = 50;
-let reverseSpeed = 30;
-let turnSpeedHigh = 20;
-let turnSpeedLow = 10;
+let forwardSpeed = 80;
+let reverseSpeed = 50;
+let turnSpeedHigh = 80;
+let turnSpeedLow = 50;
 
 function driveForward() {
     motobit.enable(MotorPower.On);
@@ -43,6 +43,8 @@ function driveStop() {
 
 radio.setGroup(1)
 basic.showIcon(IconNames.Square)
+motobit.invert(Motor.Left, true)
+motobit.invert(Motor.Right, true)
 
 radio.onDataPacketReceived(({ receivedNumber }) => {
     switch (receivedNumber) {
@@ -55,11 +57,11 @@ radio.onDataPacketReceived(({ receivedNumber }) => {
             driveBack();
             break;
         case RcCommand.RIGHT:
-            basic.showArrow(ArrowNames.East);
+            basic.showArrow(ArrowNames.NorthEast);
             driveRight();
             break;
         case RcCommand.LEFT:
-            basic.showArrow(ArrowNames.West);
+            basic.showArrow(ArrowNames.NorthWest);
             driveLeft();
             break;
         case RcCommand.STOP:

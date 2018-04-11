@@ -31,8 +31,6 @@ pins.setPull(buttonB, PinPullMode.PullUp);
 radio.setGroup(1);
 basic.showIcon(IconNames.Square);
 
-
-
 while (true) {
     if (PRESSED == pins.digitalReadPin(buttonForward)) {
         newCommand = RcCommand.FORWARD;
@@ -66,10 +64,10 @@ while (true) {
                 basic.showArrow(ArrowNames.South);
                 break;
             case RcCommand.RIGHT:
-                basic.showArrow(ArrowNames.East);
+                basic.showArrow(ArrowNames.NorthEast);
                 break;
             case RcCommand.LEFT:
-                basic.showArrow(ArrowNames.West);
+                basic.showArrow(ArrowNames.NorthWest);
                 break;
             case RcCommand.STOP:
                 basic.showIcon(IconNames.Square);
